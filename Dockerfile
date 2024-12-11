@@ -1,15 +1,17 @@
-# Use an official OpenJDK runtime as a base image
+# Use the official OpenJDK 17 base image
 FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container
+#author
+LABEL authors="Omar"
+
+#Set the working directory
 WORKDIR /app
 
-# Copy the Spring Boot JAR file into the container
-# Replace 'your-app-name.jar' with the actual name of your JAR file
-COPY target/eventsProject-1.0.0-SNAPSHOT.jar app.jar 
+# Copy the jar file from the build context into the container
+COPY target/eventsProject-1.0.0-SNAPSHOT.jar app.jar
 
-# Expose the port your Spring Boot application is running on
-EXPOSE 8080
 
-# Command to run the Spring Boot application
+EXPOSE 8090
+
+# Run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
