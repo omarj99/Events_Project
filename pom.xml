@@ -90,13 +90,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://192.168.33.10:8081/repository/eventsProject/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </snapshotRepository>
     </distributionManagement>
 
     <build>
