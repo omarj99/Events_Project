@@ -34,6 +34,10 @@ public class EventServicesImpl implements IEventServices{
     @Override
     public Event addAffectEvenParticipant(Event event, int idParticipant) {
         Participant participant = participantRepository.findById(idParticipant).orElse(null);
+        if (participant == null) {
+            // Handle the case where participant is not found (e.g., throw an exception, log a message)
+            return null; // Or return a specific error object
+        }
         if(participant.getEvents() == null){
             Set<Event> events = new HashSet<>();
             events.add(event);
@@ -48,6 +52,7 @@ public class EventServicesImpl implements IEventServices{
     public Event addAffectEvenParticipant(Event event) {
         Set<Participant> participants = event.getParticipants();
         for(Participant aParticipant:participants){
+
             Participant participant = participantRepository.findById(aParticipant.getIdPart()).orElse(null);
             if(participant.getEvents() == null){
                 Set<Event> events = new HashSet<>();
